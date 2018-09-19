@@ -35,7 +35,7 @@ namespace Structum.Elements.Web.Rest
         {
 			RestResponse restResponse = new RestRequest(this._resourceSvcUrl+query).PostJson(fastJSON.JSON.ToJSON(this.Data));
             if(!restResponse.Success) {
-                throw new ResourceException(restResponse.Errors);
+                throw new WebResourceException(restResponse.Errors);
             }
 
             if(!string.IsNullOrEmpty(restResponse.Body)) {
@@ -52,11 +52,11 @@ namespace Structum.Elements.Web.Rest
         {
 			RestResponse restResponse = new RestRequest(this._resourceSvcUrl+query).PostJson(fastJSON.JSON.ToJSON(this.Data));
             if(!restResponse.Success) {
-                throw new ResourceException(restResponse.Errors);
+                throw new WebResourceException(restResponse.Errors);
             }
 
             if(string.IsNullOrEmpty(restResponse.Body)) {
-                throw new ResourceException("Query returned an empty set.");
+                throw new WebResourceException("Query returned an empty set.");
             }
 
             return fastJSON.JSON.ToObject<TR>(restResponse.Body);
@@ -70,7 +70,7 @@ namespace Structum.Elements.Web.Rest
         {
 			RestResponse restResponse = new RestRequest(this._resourceSvcUrl+query).PutJson(fastJSON.JSON.ToJSON(this.Data));
             if(!restResponse.Success) {
-                throw new ResourceException(restResponse.Errors);
+                throw new WebResourceException(restResponse.Errors);
             }
 
             if(!string.IsNullOrEmpty(restResponse.Body)) {
@@ -86,7 +86,7 @@ namespace Structum.Elements.Web.Rest
         {
             RestResponse restResponse = new RestRequest(this._resourceSvcUrl+query).Delete();
             if(!restResponse.Success) {
-                throw new ResourceException(restResponse.Errors);
+                throw new WebResourceException(restResponse.Errors);
             }
 
             if(!string.IsNullOrEmpty(restResponse.Body)) {
@@ -103,7 +103,7 @@ namespace Structum.Elements.Web.Rest
         {
             RestResponse restResponse = new RestRequest(this._resourceSvcUrl+query).Get();
             if(!restResponse.Success && restResponse.StatusCode == HttpStatusCode.InternalServerError) {
-                throw new ResourceException(restResponse.Errors);
+                throw new WebResourceException(restResponse.Errors);
             }
 
             if (!restResponse.Success && restResponse.StatusCode != HttpStatusCode.OK) {
@@ -128,11 +128,11 @@ namespace Structum.Elements.Web.Rest
         {
             RestResponse restResponse = new RestRequest(this._resourceSvcUrl+query).Get();
             if(!restResponse.Success) {
-                throw new ResourceException(restResponse.Errors);
+                throw new WebResourceException(restResponse.Errors);
             }
 
             if(string.IsNullOrEmpty(restResponse.Body)) {
-                throw new ResourceException("Query returned an empty set.");
+                throw new WebResourceException("Query returned an empty set.");
             }
 
             return fastJSON.JSON.ToObject<PagedList<T>>(restResponse.Body);
