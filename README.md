@@ -5,5 +5,5 @@ Elements is a set of reusable classes and methods which are commonly used in app
 
 | Package | nuget Stable |
 | ------- | ------------ |
-| [Structum.Elements](https://www.nuget.org/packages/Structum.Elements/) | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.17-blue.svg)](https://www.nuget.org/packages/Structum.Elements) |
-| [Structum.Elements.Web](https://www.nuget.org/packages/Structum.Elements.Web/) | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.17-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Web) |
+| [Structum.Elements](https://www.nuget.org/packages/Structum.Elements/) | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.19-blue.svg)](https://www.nuget.org/packages/Structum.Elements) |
+| [Structum.Elements.Web](https://www.nuget.org/packages/Structum.Elements.Web/) | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.19-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Web) |
