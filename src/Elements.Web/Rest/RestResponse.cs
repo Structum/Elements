@@ -4,8 +4,12 @@ using System.Net;
 namespace Structum.Elements.Web.Rest
 {
     /// <summary>
-    ///     Defines the Rest Response.
+    ///     Provides a set of properties to hold the HTTP Response including errors and cookies.
     /// </summary>
+    /// <remarks>
+    ///     The <see cref="RestResponse"/> is a simple data structure which holds the information collected by the <see cref="RestRequest"/>
+    ///     when performing an HTTP request.
+    /// </remarks>
     public class RestResponse
     {
         /// <summary>

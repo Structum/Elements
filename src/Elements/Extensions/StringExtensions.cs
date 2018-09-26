@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 namespace Structum.Elements.Extensions
 {
 	/// <summary>
-	/// 	Defines the String Extension class.
+	/// 	Provides String Extension class.
 	/// </summary>
 	public static class StringExtension
 	{
@@ -54,22 +54,6 @@ namespace Structum.Elements.Extensions
 				return toTruncate;
 			}
 			return toTruncate.Length <= maxLength ? toTruncate : toTruncate.Substring(0, maxLength);
-		}
-
-		/// <summary>
-		///     Calculate Knuth's hash on the selected string.
-		/// </summary>
-		/// <param name="subject">String to hash.</param>
-		/// <returns>Hash of subject.</returns>
-		public static ulong CalculateKnuthHash(this string subject)
-		{
-			ulong hashedValue = 3074457345618258791ul;
-			foreach (char c in subject) {
-				hashedValue += c;
-				hashedValue *= 3074457345618258799ul;
-			}
-
-			return hashedValue;
 		}
 
 		/// <summary>

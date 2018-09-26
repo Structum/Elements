@@ -3,7 +3,7 @@
 namespace Structum.Elements.Extensions
 {
     /// <summary>
-    ///     Defines the Stream Extensions.
+    ///     Provides Stream Extensions.
     /// </summary>
     public static class StreamExtensions
     {

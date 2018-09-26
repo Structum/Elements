@@ -6,6 +6,16 @@ namespace Structum.Elements.Web
     /// <summary>
     ///     Defines the URL Authority class.
     /// </summary>
+    /// <example>
+    ///     The following code demonstrate how to use the Url Authority class:
+    ///     <code>
+    ///     UrlAuthority authority = new UrlAuthority("username:password@www.mydomain.com:8080");
+    ///     Console.WriteLine("Full Authority : " + authority.FullAuthority); // aespinoza:myPassword@www.mydomain.com:8080
+    ///     Console.WriteLine("Authority User Info: " + authority.UserInfo);  // aespinoza:myPassword
+    ///     Console.WriteLine("Authority Host: " + authority.Host);           // www.mydomain.com
+    ///     Console.WriteLine("Authority Port:" + authority.Port);            // 8080
+    ///     </code>
+    /// </example>
     public class UrlAuthority
     {
         /// <summary>
@@ -37,7 +47,7 @@ namespace Structum.Elements.Web
         ///     Initializes a new instance of the <see cref="UrlAuthority"/> class.
         /// </summary>
         /// <param name="fullAuthority">Full authority.</param>
-        /// <exception cref="ArgumentNullException">fullAuthority</exception>
+        /// <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="fullAuthority"/> is <c>null</c> or empty.</exception>
         public UrlAuthority(string fullAuthority)
         {
             if (string.IsNullOrEmpty(fullAuthority)) {

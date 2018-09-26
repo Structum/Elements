@@ -1,11 +1,18 @@
 using System;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace Structum.Elements.Environment
 {
     /// <summary>
-    ///     Defines the Platform Information Factory class.
+    ///     Provides factory methods for the <see cref="PlatformInfoFactory"/> class.
     /// </summary>
+    /// <example>
+    ///     To collect the local platform information just call the <see cref="CreateLocalPlatformInfo"/> Factory method:
+    ///     <code>
+    ///     var localPlatformInfo = PlatformInfoFactory.CreateLocalPlatformInfo();
+    ///     </code>
+    /// </example>
     public static  class PlatformInfoFactory
     {
         /// <summary>
@@ -29,6 +36,11 @@ namespace Structum.Elements.Environment
         /// <returns>OS Platform.</returns>
         private static OsPlatformType GetOsPlatform()
         {
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) {
+                return OsPlatformType.Linux;
+            }
+
             PlatformID platform = System.Environment.OSVersion.Platform;
 
             if ((int) platform == 128) {

@@ -16,13 +16,18 @@ namespace Structum.Elements.Environment
         Windows,
 
         /// <summary>
-        ///     Unix Platform. Includes Linux.
+        ///     Unix Platform.
         /// </summary>
         Unix,
 
         /// <summary>
         ///     MacOS Platform.
         /// </summary>
-        MacOs
+        MacOs,
+
+        /// <summary>
+        ///     Linux Platform.
+        /// </summary>
+        Linux
     }
 }

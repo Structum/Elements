@@ -27,7 +27,7 @@ then
 	RELEASE="Debug"
 fi
 
-# Header
+# Build
 echo "$BLUE *** Building Structum.Elements v$VERSION in $RELEASE mode.$NC"
 cd ../src/Elements/
 dotnet restore
@@ -38,6 +38,13 @@ cd $CURR_FOLDER
 
 echo "$BLUE *** Building Structum.Elements.Web v$VERSION in $RELEASE mode.$NC"
 cd ../src/Elements.Web/
+dotnet restore
+dotnet build -c $RELEASE /p:version=$VERSION --no-incremental
+dotnet pack -c $RELEASE /p:version=$VERSION
+cd $CURR_FOLDER
+
+echo "$BLUE *** Building Structum.Elements.Security v$VERSION in $RELEASE mode.$NC"
+cd ../src/Elements.Security/
 dotnet restore
 dotnet build -c $RELEASE /p:version=$VERSION --no-incremental
 dotnet pack -c $RELEASE /p:version=$VERSION

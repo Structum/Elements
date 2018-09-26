@@ -1,12 +1,18 @@
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace Structum.Elements.Environment
 {
     /// <summary>
-    ///     Defines the Application Info Factory class.
+    ///     Provides factory methods for the <see cref="ApplicationInfo"/> class.
     /// </summary>
+    /// <example>
+    ///     To collect the current application information just call the <see cref="CreateCurrentApplicationInfo"/> Factory method:
+    ///     <code>
+    ///     var thisAppInfo = ApplicationInfoFactory.CreateCurrentApplicationInfo();
+    ///     </code>
+    /// </example>
     public static class ApplicationInfoFactory
     {
         /// <summary>

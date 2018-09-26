@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-		<PackageId>Structum.Elements</PackageId>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <AssemblyName>Structum.Elements.Security</AssemblyName>
+        <RootNamespace>Structum.Elements.Security</RootNamespace>
 		<Version>1.0.0</Version>
 		<Authors>Alex Espinoza</Authors>
 		<Owners>aespinoza</Owners>
 		<Company>Structum, Inc.</Company>
 		<copyright>2018 Structum, Inc.</copyright>
-        <AssemblyName>Structum.Elements</AssemblyName>
-        <RootNamespace>Structum.Elements</RootNamespace>
-        <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
+
 </Project>

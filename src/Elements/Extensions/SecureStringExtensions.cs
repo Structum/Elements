@@ -3,7 +3,7 @@
 namespace Structum.Elements.Extensions
 {
     /// <summary>
-    ///     Defines the Secure String Extensions.
+    ///     Provides Secure String Extensions.
     /// </summary>
     public static class SecureStringExtensions
     {

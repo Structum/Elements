@@ -4,8 +4,24 @@ using System.Text.RegularExpressions;
 namespace Structum.Elements.Web
 {
     /// <summary>
-    ///     Defines the URL class.
+    ///     Defines the URL class which provides methods for parsing an URL.
     /// </summary>
+    /// <example>
+    ///     The following code demonstrates how to use the URL class to parse a URL:
+    ///     <code>
+    ///     Url url = new Url("https://aespinoza:myPassword@www.mydomain.com:8080/myfolder/otherfolder/x.aspx?id=50#some-fragment");
+    /// 
+    ///     Console.WriteLine("Full URL: " + url.FullUrl);                        // https://aespinoza:myPassword@www.mydomain.com:8080/myfolder/otherfolder/x.aspx?id=50#some-fragment
+    ///     Console.WriteLine("Scheme: " + url.Scheme);                           // https
+    ///     Console.WriteLine("Path: " + url.Path);                               // /myfolder/otherfolder/x.aspx
+    ///     Console.WriteLine("Query: " + url.Query);                             // id=50
+    ///     Console.WriteLine("Fragment: " + url.Fragment);                       // some-fragment
+    ///     Console.WriteLine("Full Authority : " + url.Authority.FullAuthority); // aespinoza:myPassword@www.mydomain.com:8080
+    ///     Console.WriteLine("Authority User Info: " + url.Authority.UserInfo);  // aespinoza:myPassword
+    ///     Console.WriteLine("Authority Host: " + url.Authority.Host);           // www.mydomain.com
+    ///     Console.WriteLine("Authority Port:" + url.Authority.Port);            // 8080
+    ///     </code>
+    /// </example>
     public sealed class Url
     {
         /// <summary>
@@ -53,6 +69,7 @@ namespace Structum.Elements.Web
         ///     Initializes a new instance of the <see cref="Url"/> class.
         /// </summary>
         /// <param name="fullUrl">Full URL.</param>
+        /// <exception cref="T:ArgumentNullException">Thrown when <paramref name="fullUrl"/> is null or empty.</exception>
         public Url(string fullUrl)
         {
             if (string.IsNullOrEmpty(fullUrl)) {

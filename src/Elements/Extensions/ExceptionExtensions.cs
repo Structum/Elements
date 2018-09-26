@@ -4,7 +4,7 @@ using System.Text;
 namespace Structum.Elements.Extensions
 {
     /// <summary>
-    ///     Defines the Exception Extensions.
+    ///     Provides Exception extensions methods.
     /// </summary>
     public static class ExceptionExtensions
     {

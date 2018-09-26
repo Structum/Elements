@@ -5,14 +5,11 @@
     <Authors>Alex Espinoza</Authors>
     <Owners>aespinoza</Owners>
     <Company>Structum, Inc.</Company>
-    <copyright>Copyright � 2018 Structum, Inc.</copyright>
+    <copyright>2018 Structum, Inc.</copyright>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Structum.Elements.Web</AssemblyName>
     <RootNamespace>Structum.Elements.Web</RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="fastJSON" Version="2.2.0" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Elements\Elements.csproj" />
   </ItemGroup>

@@ -1,7 +1,7 @@
 namespace Structum.Elements.Environment
 {
     /// <summary>
-    ///     Identifier the Processor Architecture Type.
+    ///     Identifies the Processor Architecture Type.
     /// </summary>
     public enum ProcessorArchitectureType
     {

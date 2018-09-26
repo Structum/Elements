@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Structum.Elements.Extensions
 {
     /// <summary>
-    ///     Defines the Object Extensions.
+    ///     Provides Object Extensions.
     /// </summary>
     public static class ObjectExtensions
     {
@@ -34,17 +34,6 @@ namespace Structum.Elements.Extensions
             }
 
             return dictionary;
-        }
-
-        /// <summary>
-        ///     Calculates the object's hash using Knuth's algorithm.
-        /// </summary>
-        /// <param name="obj">Object to hash.</param>
-        /// <returns>Knuth Hash representation of the object.</returns>
-        public static ulong CalculateKnuthHash(this object obj)
-        {
-            string json = fastJSON.JSON.ToJSON(obj);
-            return StringExtension.CalculateKnuthHash(json);
         }
 
         /// <summary>

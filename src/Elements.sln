@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elements", "Elements\Elemen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elements.Web", "Elements.Web\Elements.Web.csproj", "{2CC1E9D4-F5BD-48A5-81EB-8731FD58804F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elements.Security", "Elements.Security\Elements.Security.csproj", "{96525DED-A56F-46EB-8296-3B4DB894200C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{2CC1E9D4-F5BD-48A5-81EB-8731FD58804F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CC1E9D4-F5BD-48A5-81EB-8731FD58804F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CC1E9D4-F5BD-48A5-81EB-8731FD58804F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96525DED-A56F-46EB-8296-3B4DB894200C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96525DED-A56F-46EB-8296-3B4DB894200C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96525DED-A56F-46EB-8296-3B4DB894200C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96525DED-A56F-46EB-8296-3B4DB894200C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
