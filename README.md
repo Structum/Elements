@@ -1,10 +1,56 @@
 # Elements
-Elements is a set of reusable classes and methods which are commonly used in applications.
+Elements is a set of reusable components commonly used in applications.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/2l5e8lboo4d60j2d?svg=true)](https://ci.appveyor.com/project/aespinoza/elements)
+| Build Status | [![Build status](https://ci.appveyor.com/api/projects/status/2l5e8lboo4d60j2d?svg=true)](https://ci.appveyor.com/project/aespinoza/elements) |
+| -------------| ---------------------------------------------------------------|
 
-| Package | nuget Stable |
-| ------- | ------------ |
-| [Structum.Elements](https://www.nuget.org/packages/Structum.Elements/) | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.20-blue.svg)](https://www.nuget.org/packages/Structum.Elements) |
-| [Structum.Elements.Web](https://www.nuget.org/packages/Structum.Elements.Web/) | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.20-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Web) |
-| [Structum.Elements.Security](https://www.nuget.org/packages/Structum.Elements.Security/) | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.20-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Security) |
+| Package | description  | nuget Stable |
+| ------- | ------------ | -------------|
+| [Structum.Elements](https://www.nuget.org/packages/Structum.Elements/) | Common classes and Type extensions | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.21-blue.svg)](https://www.nuget.org/packages/Structum.Elements) |
+| [Structum.Elements.Web](https://www.nuget.org/packages/Structum.Elements.Web/) | Lightweight Rest Requests and URL parser. | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.21-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Web) |
+| [Structum.Elements.Security](https://www.nuget.org/packages/Structum.Elements.Security/) | Common Encryption, Hashing and Password protection classes. | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.21-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Security) |
+
+## Getting Started
+
+### Dependencies
+
+* .NETStandard 2.0
+
+
+### Installing
+
+#### Structum.Elements
+```
+PM> Install-Package Structum.Elements
+```
+
+#### Structum.Elements.Web
+```
+PM> Install-Package Structum.Elements.Web
+```
+
+#### Structum.Elements.Security
+```
+PM> Install-Package Structum.Elements
+```
+
+## Built With
+
+* [JetBrains Rider](https://www.jetbrains.com/rider/) - The IDE Used.
+* [DocFx](https://dotnet.github.io/docfx/) - Documentation Generator.
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Alex Espinoza** - *Initial work* - [Structum](https://github.com/Structum)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
