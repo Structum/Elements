@@ -13,6 +13,7 @@
     <projectUrl>https://github.com/Structum/Elements</projectUrl>
 	<description>Lightweight Rest Requests and URL parser.</description>
 	<tags>web http rest</tags>
+	<iconUrl>http://structum.net/images/elements_logo.png</iconUrl>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Elements\Elements.csproj" />

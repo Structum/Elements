@@ -13,6 +13,7 @@
         <projectUrl>https://github.com/Structum/Elements</projectUrl>
 		<description>Common Encryption, Hashing and Password protection classes.</description>
 		<tags>security encryption hashing password</tags>
+		<iconUrl>http://structum.net/images/elements_logo.png</iconUrl>
     </PropertyGroup>
 
     <ItemGroup>
