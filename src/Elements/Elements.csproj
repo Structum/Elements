@@ -14,5 +14,6 @@
         <projectUrl>https://github.com/Structum/Elements</projectUrl>
 		<description>Common classes and Type extensions.</description>
 		<tags>utility extensions</tags>
+		<iconUrl>http://structum.net/images/elements_logo.png</iconUrl>
     </PropertyGroup>
 </Project>
