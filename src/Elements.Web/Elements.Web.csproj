@@ -9,6 +9,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Structum.Elements.Web</AssemblyName>
     <RootNamespace>Structum.Elements.Web</RootNamespace>
+	<licenseUrl>https://github.com/Structum/Elements/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Structum/Elements</projectUrl>
+	<description>Lightweight Rest Requests and URL parser.</description>
+	<tags>web http rest</tags>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Elements\Elements.csproj" />

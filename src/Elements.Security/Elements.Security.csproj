@@ -9,6 +9,10 @@
 		<Owners>aespinoza</Owners>
 		<Company>Structum, Inc.</Company>
 		<copyright>2018 Structum, Inc.</copyright>
+		<licenseUrl>https://github.com/Structum/Elements/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/Structum/Elements</projectUrl>
+		<description>Common Encryption, Hashing and Password protection classes.</description>
+		<tags>security encryption hashing password</tags>
     </PropertyGroup>
 
     <ItemGroup>
