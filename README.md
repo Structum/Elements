@@ -6,9 +6,9 @@ Elements is a set of reusable components commonly used in applications.
 
 | Package | description  | nuget Stable |
 | ------- | ------------ | -------------|
-| [Structum.Elements](https://www.nuget.org/packages/Structum.Elements/) | Common classes and Type extensions | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.21-blue.svg)](https://www.nuget.org/packages/Structum.Elements) |
-| [Structum.Elements.Web](https://www.nuget.org/packages/Structum.Elements.Web/) | Lightweight Rest Requests and URL parser. | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.21-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Web) |
-| [Structum.Elements.Security](https://www.nuget.org/packages/Structum.Elements.Security/) | Common Encryption, Hashing and Password protection classes. | [![nuget](https://img.shields.io/badge/nuget-v1.0.0.21-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Security) |
+| [Structum.Elements](https://www.nuget.org/packages/Structum.Elements/) | Common classes and Type extensions | [![nuget](https://img.shields.io/badge/nuget-v1.1.0.2-blue.svg)](https://www.nuget.org/packages/Structum.Elements) |
+| [Structum.Elements.Web](https://www.nuget.org/packages/Structum.Elements.Web/) | Lightweight Rest Requests and URL parser. | [![nuget](https://img.shields.io/badge/nuget-v1.1.0.2-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Web) |
+| [Structum.Elements.Security](https://www.nuget.org/packages/Structum.Elements.Security/) | Common Encryption, Hashing and Password protection classes. | [![nuget](https://img.shields.io/badge/nuget-v1.1.0.2-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Security) |
 
 ## Getting Started
 
@@ -45,7 +45,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Structum/Elements/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Structum/Elements/tags).
 
 ## Authors
 
