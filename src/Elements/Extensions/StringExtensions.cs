@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -13,6 +14,11 @@ namespace Structum.Elements.Extensions
 		/// 	Regex Pattern used to identify a GUID in a string.
 		/// </summary>
 		private static readonly Regex GuidPattern = new Regex("^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$", RegexOptions.Compiled);
+
+		/// <summary>
+		/// 	Special Character list.
+		/// </summary>
+		private static readonly char[] Specials = { '.', '-', '_', '!', '@', '$', '^', '*', '=', '~', '|', '+', '?' };
 
 		/// <summary>
 		/// 	Encodes the selected string to Base 64.
@@ -131,6 +137,56 @@ namespace Structum.Elements.Extensions
 		public static string[] ToArray(this string self, char separator = ';', string[] defaultValue = null)
 		{
 			return string.IsNullOrEmpty(self) ? defaultValue : self.Split(separator);
+		}
+
+		/// <summary>
+		/// 	Returns <c>true</c> if the string contains numbers, <c>false</c> otherwise.
+		/// </summary>
+		/// <param name="self">Current String.</param>
+		/// <returns><c>true</c> if the string contains numbers, <c>false</c> otherwise.</returns>
+		public static bool ContainsNumbers(this string self)
+		{
+			return self.Any(char.IsDigit);
+		}
+
+		/// <summary>
+		/// 	Return <c>true</c> if the string contains special characters, <c>false</c> otherwise.
+		/// </summary>
+		/// <param name="self">Current String.</param>
+		/// <returns><c>true</c> if the string contains special characters, <c>false</c> otherwise.</returns>
+		public static bool ContainsSpecialChars(this string self)
+		{
+			return Specials.Any(self.Contains);
+		}
+
+		/// <summary>
+		/// 	Return <c>true</c> if the string contains upper case characters, <c>false</c> otherwise.
+		/// </summary>
+		/// <param name="self">Current String.</param>
+		/// <returns><c>true</c> if the string contains upper case characters, <c>false</c> otherwise.</returns>
+		public static bool ContainsUpperCaseChars(this string self)
+		{
+			return self.Any(char.IsUpper);
+		}
+
+		/// <summary>
+		/// 	Return <c>true</c> if the string contains lower case characters, <c>false</c> otherwise.
+		/// </summary>
+		/// <param name="self">Current String.</param>
+		/// <returns><c>true</c> if the string contains lower case characters, <c>false</c> otherwise.</returns>
+		public static bool ContainsLowerCaseChars(this string self)
+		{
+			return self.Any(char.IsLower);
+		}
+
+		/// <summary>
+		/// 	Return <c>true</c> if the string contains spaces <c>false</c> otherwise.
+		/// </summary>
+		/// <param name="self">Current String.</param>
+		/// <returns><c>true</c> if the string contains spaces, <c>false</c> otherwise.</returns>
+		public static bool ContainsSpaces(this string self)
+		{
+			return self.Any(char.IsWhiteSpace);
 		}
 	}
 }

@@ -8,10 +8,19 @@ namespace Structum.Elements.Security.Encryption
     ///     Provides an easy to use hashing methods with a configurable hashing algorithm.
     /// </summary>
     /// <example>
-    ///     The following code shows how to create a hasher using SHA-256 Algorithm:
+    ///     The following code shows how to create a hasher using the default hashing Algorithm (Sha256):
     ///     <code>
-    ///     var hasher = new Hasher("SHA-256");
-    ///     string hash = hasher.Hash("MyC0013ncrypti0nP@$$w0rd!");
+    ///     var hasher = new Hasher();
+    ///     string hash = hasher.ComputeHash("MyC0013ncrypti0nP@$$w0rd!");
+    ///
+    ///     Console.WriteLine("This is the resulting hash: " + hash);
+    ///     </code>
+    ///     The following code demonstrates how to create a hasher with a different hashing algorithm:
+    ///     <code>
+    ///     var hasher = new Hasher();
+    ///     string hash = hasher.ComputeHash("MyC0013ncrypti0nP@$$w0rd!") {
+    ///         HashAlgorithm = CryptographicHashAlgorithmType.Md5
+    ///     };
     ///
     ///     Console.WriteLine("This is the resulting hash: " + hash);
     ///     </code>
@@ -22,31 +31,25 @@ namespace Structum.Elements.Security.Encryption
         ///     Gets or Sets the Hashing Algorithm.
         /// </summary>
         /// <value>Name of the Hash Algorithm.</value>
-        private string HashAlgorithmName { get; set; }
+        public CryptographicHashAlgorithmType HashingAlgorithm { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Hasher"/> class.
         /// </summary>
-        /// <param name="hashAlgorithm">Hash algorithm.</param>
-        public Hasher(string hashAlgorithm)
+        public Hasher()
         {
-            this.HashAlgorithmName = hashAlgorithm;
+            this.HashingAlgorithm = CryptographicHashAlgorithmType.Sha256;
         }
 
         /// <summary>
-        ///     Creates a Hash for the selected plain text
+        ///     Computes a Hash for the selected text.
         /// </summary>
         /// <param name="plainText">Plain Text.</param>
         /// <exception cref="T:NotSupportedException">Thrown when the supplied Hashing Algorithm is not supported.</exception>
         /// <returns><c>String</c> containing the Hash.</returns>
-        public string Hash(string plainText)
+        public string ComputeHash(string plainText)
         {
-            using(HashAlgorithm hasher = HashAlgorithm.Create(this.HashAlgorithmName)) {
-
-                if (hasher == null) {
-                    throw new NotSupportedException(this.HashAlgorithmName);
-                }
-
+            using(HashAlgorithm hasher = CreateAlgorithm(this.HashingAlgorithm)) {
                 byte[] originalBytes = Encoding.UTF8.GetBytes(plainText);
                 byte[] hashBytes = hasher.ComputeHash(originalBytes);
 
@@ -54,6 +57,17 @@ namespace Structum.Elements.Security.Encryption
 
                 return Convert.ToBase64String(hashBytes);
             }
+        }
+
+        /// <summary>
+        ///     Creates and returns the Hashing Algorithm instance.
+        /// </summary>
+        /// <param name="type">Algorithm Type.</param>
+        /// <returns>Symmetric Algorithm Instance.</returns>
+        private static HashAlgorithm CreateAlgorithm(CryptographicHashAlgorithmType type)
+        {
+            string algorithm = Enum.GetName(typeof(CryptographicHashAlgorithmType), type) ?? "SHA-256";
+            return HashAlgorithm.Create(algorithm);
         }
     }
 }

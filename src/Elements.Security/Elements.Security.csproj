@@ -11,4 +11,8 @@
 		<copyright>2018 Structum, Inc.</copyright>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Elements\Elements.csproj" />
+    </ItemGroup>
+
 </Project>

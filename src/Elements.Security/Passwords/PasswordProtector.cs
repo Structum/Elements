@@ -8,19 +8,37 @@ namespace Structum.Elements.Security.Passwords
     ///     is protected it is returned as <see cref="ProtectedPassword"/> class.
     /// </summary>
     /// <remarks>
-    ///     Iterative Stretching works by iteratively adding the salt and hashing the results certain number of times.
-    ///     This is controlled by the Iteration Count.
+    ///     Iterative Stretching works by iteratively adding a salt to a password and then hashing the results a certain number of times.
+    ///     The <see cref="Protect"/> method provides the best solution when setting iteration count and salt parameters with a null value,
+    ///     which will generate a random salt and iteration count. The resulting <see cref="ProtectedPassword"/> instance will contain the
+    ///     Salt and Iteration Count used to protect the password. The results of <see cref="Protect"/> method can then be stored in a database
+    ///     to use for comparison later. It is necessary to store the full Protected Password in the database, otherwise there is no way to compare.
+    ///     <br />
+    ///     To compare a plain text password, we just need to use <see cref="CompareProtectedPassword"/> method which expects the plain text password and
+    ///     the stored protected password as parameters.
+    ///     <br />
+    ///     The default <see cref="CryptographicHashAlgorithmType"/> is <see cref="CryptographicHashAlgorithmType.Sha256"/>.
     /// </remarks>
     /// <example>
     ///     The following code shows how to use the Password Protector with a random salt and random iteration count:
     ///     <code>
     ///     string passwordToProtect = "MyC0013ncrypti0nP@$$w0rd!";
     ///     using(var protector = new PasswordProtector()) {
-    ///         ProtectedPassword protectedPassword = protector.GetProtectedPassword(passwordToProtect);
+    ///         ProtectedPassword protectedPassword = protector.Protect(passwordToProtect);
     ///
     ///         Console.WriteLine("Protected Password Text: " + protectedPassword.Password);
     ///         Console.WriteLine("Protected Password Salt: " + protectedPassword.Salt);
     ///         Console.WriteLine("Protected Password Iteration Count: " + protectedPassword.IterationCount);
+    ///     }
+    ///     </code>
+    ///     The following code demonstrates how to compare a plain text password to the stored Protect Password:
+    ///     <code>
+    ///     using(var protector = new PasswordProtector()) {
+    ///         if(protector.CompareProtectedPassword("MyC0013ncrypti0nP@$$w0rd!", protectedPassword)) {
+    ///             Console.WriteLine("Passwords Match!");
+    ///         } else {
+    ///             Console.WriteLine("Passwords not match...");
+    ///         }
     ///     }
     ///     </code>
     /// </example>
@@ -42,7 +60,7 @@ namespace Structum.Elements.Security.Passwords
         ///     Gets or Sets teh Hasher.
         /// </summary>
         /// <value>Hasher.</value>
-        private readonly Hasher _hasher = new Hasher("SHA-256");
+        private readonly Hasher _hasher = new Hasher();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PasswordProtector"/> class.
@@ -53,48 +71,46 @@ namespace Structum.Elements.Security.Passwords
         }
 
         /// <summary>
-        /// Gets the protected password.
+        ///     Protects the selected password using a defined salt and iteration count.
         /// </summary>
         /// <param name="passwordToProtect">Password to Protect.</param>
+        /// <param name="iterationCount">Iteration count. Set to null to generate a random iteration count.</param>
+        /// <param name="salt">Password Salt to use. Set to null to generate a random salt.</param>
         /// <returns>Protected Password.</returns>
-        public ProtectedPassword GetProtectedPassword(string passwordToProtect)
+        public ProtectedPassword Protect(string passwordToProtect, int? iterationCount = null, string salt = null)
         {
-            string salt = CreateRandomSalt();
-            int iterationCount = CreateRandomIterationNumber();
+            if (iterationCount == null) {
+                iterationCount = CreateRandomIterationNumber();
+            }
 
-            return GetProtectedPassword(passwordToProtect, salt, iterationCount);
-        }
-
-        /// <summary>
-        ///     Gets the protected password.
-        /// </summary>
-        /// <param name="passwordToProtect">Password to Protect.</param>
-        /// <param name="salt">Password Salt.</param>
-        /// <param name="iterationCount">Iteration count.</param>
-        /// <returns>Protected Password.</returns>
-        public ProtectedPassword GetProtectedPassword(string passwordToProtect, string salt, int iterationCount)
-        {
             if(salt == null) {
-                salt = this._passwordGenerator.Generate();
+                salt = CreateRandomSalt();
             }
 
             string protectedPassword = passwordToProtect + salt;
             for (int iteration = 0; iteration < iterationCount; iteration++) {
-                protectedPassword = this._hasher.Hash(protectedPassword);
+                protectedPassword = this._hasher.ComputeHash(protectedPassword);
             }
 
-            return new ProtectedPassword(protectedPassword, salt, iterationCount);
+            return new ProtectedPassword(protectedPassword, salt, iterationCount.Value);
+        }
+
+        /// <summary>
+        ///     Compares the selected plain text password to the stored Protected Password.
+        ///     Returns <c>true</c> if the plain text password matches the stored protected password, <c>false</c> otherwise.
+        /// </summary>
+        /// <param name="passwordToCompare">Plain Text Password.</param>
+        /// <param name="protectedPassword">Stored Protected Password.</param>
+        /// <returns><c>true</c> if the plain text password matches the stored protected password, <c>false</c> otherwise.</returns>
+        public bool CompareProtectedPassword(string passwordToCompare, ProtectedPassword protectedPassword)
+        {
+            ProtectedPassword protectedPasswordToCompare = this.Protect(passwordToCompare, protectedPassword.IterationCount, protectedPassword.Salt);
+            return protectedPasswordToCompare.Password.Equals(protectedPassword.Password);
         }
 
         /// <summary>
         ///     Releases all resource used by the <see cref="PasswordProtector"/> object.
         /// </summary>
-        /// <remarks>Call <see cref="Dispose"/> when you are finished using the
-        /// <see cref="PasswordProtector"/>. The <see cref="Dispose"/> method leaves the
-        /// <see cref="PasswordProtector"/> in an unusable state. After calling
-        /// <see cref="Dispose"/>, you must release all references to the
-        /// <see cref="PasswordProtector"/> so the garbage collector can reclaim the memory
-        /// that the <see cref="PasswordProtector"/> was occupying.</remarks>
         public void Dispose()
         {
             this._randomizer?.Dispose();

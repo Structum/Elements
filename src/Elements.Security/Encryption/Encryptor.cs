@@ -25,7 +25,7 @@ namespace Structum.Elements.Security.Encryption
     ///     Console.WriteLine("This is the encrypted value:" + encryptedText);
     ///
     ///     // Decrypt the Cipher Text.
-    ///     string decryptedValue = encryptor.Encrypt(encryptedText);
+    ///     string decryptedValue = encryptor.Decrypt(encryptedText);
     ///     Console.WriteLine("This is the decrypted text" + decryptedValue);
     ///     </code>
     /// </example>

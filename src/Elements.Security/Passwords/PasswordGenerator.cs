@@ -37,12 +37,12 @@ namespace Structum.Elements.Security.Passwords
         /// <summary>
         ///     Default Minimum constant.
         /// </summary>
-        private const int DefaultMinimum = 6;
+        public const int DefaultMinimum = 6;
 
         /// <summary>
         ///     Default Maximum constant.
         /// </summary>
-        private const int DefaultMaximum = 20;
+        public const int DefaultMaximum = 20;
 
         /// <summary>
         ///     Gets or Sets the minimum password size. The default value is 6.
@@ -59,19 +59,19 @@ namespace Structum.Elements.Security.Passwords
         /// <summary>
         ///     Gets or Sets the Allow Repeat Characters flag. Default is <c>false</c>
         /// </summary>
-        /// <value>True to allow character repetition in the generated password.</value>
+        /// <value><c>true</c> to allow character repetition in the generated password.</value>
         public bool AllowRepeatCharacters { get; set; }
 
         /// <summary>
         ///     Gets or Sets the allow Consecutive Characters flag. Default is <c>false</c>
         /// </summary>
-        /// <value>True to allow consecutive characters in the generated password.</value>
+        /// <value><c>true</c> to allow consecutive characters in the generated password.</value>
         public bool AllowConsecutiveCharacters { get; set; }
 
         /// <summary>
-        ///     Initializes a new instance of the Password Generator class.
+        ///     Initializes a new instance of the <see cref="PasswordGenerator"/> class.
         /// </summary>
-        /// <param name="randomizer">Randomizer instance. <see cref="Randomizer"/></param>
+        /// <param name="randomizer"><see cref="Randomizer"/> instance.</param>
         public PasswordGenerator(Randomizer randomizer)
         {
             this.MinimumSize = DefaultMinimum;
@@ -87,11 +87,11 @@ namespace Structum.Elements.Security.Passwords
         /// <returns>Secure Password.</returns>
         public string Generate()
         {
-            int pwdLength = GetRandomPasswordLength(this.MinimumSize, this.MaximumSize);
-            StringBuilder pwdBuffer = new StringBuilder(pwdLength+1);
+            int pwdLength = this.GetRandomPasswordLength(this.MinimumSize, this.MaximumSize);
+            StringBuilder pwdBuffer = new StringBuilder(pwdLength);
 
             char lastCharacter = '\n';
-            for (int i = 0; i < pwdLength; i++) {
+            for (int i = 0; i < pwdLength-2; i++) {
                 var nextCharacter = GetRandomCharacter();
 
                 if (!this.AllowConsecutiveCharacters) {

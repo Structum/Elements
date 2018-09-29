@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿
+using Structum.Elements.Extensions;
 using System.Text.RegularExpressions;
 
 namespace Structum.Elements.Security.Passwords
@@ -10,33 +11,33 @@ namespace Structum.Elements.Security.Passwords
     ///     The following code demonstrates how to use the Password Validator:
     ///     <code>
     ///     string message;
-    ///     PasswordStrength strength = PasswordValidator.GetPasswordStrength("mypwd", out message);
+    ///     PasswordStrength strength = PasswordValidator.GetPasswordStrength("god", out message);
     ///     Console.WriteLine(Enum.GetName(typeof(PasswordStrength), strength); // Bad.
     ///     Console.WriteLine(message); // This will be: The password needs to be at least 8 characters long.
     ///
-    ///     strength = PasswordValidator.GetPasswordStrength("mypassword", out message);
-    ///     Console.WriteLine(Enum.GetName(typeof(PasswordStrength), strength); // Bad.
+    ///     strength = PasswordValidator.GetPasswordStrength("SuperMan1", out message);
+    ///     Console.WriteLine(Enum.GetName(typeof(PasswordStrength), strength); // Weak.
     ///     Console.WriteLine(message); // This will be: The password needs to have at least one number.
     /// 
-    ///     strength = PasswordValidator.GetPasswordStrength("mypassword1", out message);
-    ///     Console.WriteLine(Enum.GetName(typeof(PasswordStrength), strength); // Bad.
+    ///     strength = PasswordValidator.GetPasswordStrength("myP@ss1234!", out message);
+    ///     Console.WriteLine(Enum.GetName(typeof(PasswordStrength), strength); // Weak.
     ///     Console.WriteLine(message); // This will be: The password needs to have at least one special character.
     ///
-    ///     strength = PasswordValidator.GetPasswordStrength("mypassword1", out message);
-    ///     Console.WriteLine(Enum.GetName(typeof(PasswordStrength), strength); // Strong.
+    ///     strength = PasswordValidator.GetPasswordStrength("C4ll m3 m@yb3!", out message);
+    ///     Console.WriteLine(Enum.GetName(typeof(PasswordStrength), strength); // Best.
     ///     </code>
     /// </example>
     public static class PasswordValidator
     {
         /// <summary>
-        ///     Returns the password strength.
+        ///     Returns the password strength for the selected password.
         /// </summary>
         /// <remarks>
         ///     Password Strength: <br />
         ///     <ul>
-        ///         <li>Bad: The password needs to be at least 8 characters long, contain one number and one special character.</li>
-        ///         <li>Weak: Weak Password. </li>
-        ///         <li>Strong: Strong Password.</li>
+        ///         <li>Bad: Bad password. Improve it by adding a number.</li>
+        ///         <li>Weak: Weak Password. Adding an Upper case character and special character will improve it.</li>
+        ///         <li>Strong: Strong Password. Improve it by adding spaces.</li>
         ///         <li>Best: Best Password.</li>
         ///     </ul>
         /// </remarks>
@@ -58,17 +59,22 @@ namespace Structum.Elements.Security.Passwords
                 return PasswordStrength.Bad;
             }
 
-            if (Regex.IsMatch(password, bad)) {
+            if (!password.ContainsNumbers()) {
                 messages = "The password needs to have at least one number.";
                 return PasswordStrength.Bad;
             }
 
-            if (CharSetValues.Specials.Any(password.Contains)) {
-                messages = "The password needs to have at least one special character.";
-                return PasswordStrength.Bad;
+            if (!password.ContainsUpperCaseChars()) {
+                messages = "The password needs to have at least one upper case character.";
+                return PasswordStrength.Weak;
             }
 
-            if (Regex.IsMatch(password, best)) {
+            if (!password.ContainsSpecialChars()) {
+                messages = "The password needs to have at least one special character.";
+                return PasswordStrength.Weak;
+            }
+
+            if (Regex.IsMatch(password, best) && password.ContainsSpaces()) {
                 return PasswordStrength.Best;
             }
 
@@ -78,6 +84,11 @@ namespace Structum.Elements.Security.Passwords
 
             if (Regex.IsMatch(password, weak)) {
                 return PasswordStrength.Weak;
+            }
+
+            if (Regex.IsMatch(password, bad)) {
+                messages = "The password needs to have at least one number.";
+                return PasswordStrength.Bad;
             }
 
             return PasswordStrength.Bad;
