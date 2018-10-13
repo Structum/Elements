@@ -50,5 +50,13 @@ dotnet build -c $RELEASE /p:version=$VERSION --no-incremental
 dotnet pack -c $RELEASE /p:version=$VERSION
 cd $CURR_FOLDER
 
+echo "$BLUE *** Building Structum.Elements.Data v$VERSION in $RELEASE mode.$NC"
+cd ../src/Elements.Data/
+dotnet restore
+dotnet build -c $RELEASE /p:version=$VERSION --no-incremental
+dotnet pack -c $RELEASE /p:version=$VERSION
+echo ""
+cd $CURR_FOLDER
+
 echo ""
 echo "$GREEN Done.$NC"
