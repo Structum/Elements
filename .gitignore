@@ -27,4 +27,4 @@ x86/
 *.nupkg
 
 # macOS specific
-.DS_Store/
+.DS_Store

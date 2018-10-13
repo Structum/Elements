@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Structum.Elements
+namespace Structum.Elements.Data
 {
     /// <summary>
     ///     Defines a Paged List which represents a page of the set of items of a full list. This class
