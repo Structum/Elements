@@ -21,12 +21,13 @@ namespace Structum.Elements.Environment
         /// <returns>Current Application Information.</returns>
         public static ApplicationInfo CreateCurrentApplicationInfo()
         {
+            Assembly asm = Assembly.GetEntryAssembly();
             ApplicationInfo currApp = new ApplicationInfo {
                 Name = Path.GetFileName(System.Environment.GetCommandLineArgs()[0]),
-                Version = Assembly.GetExecutingAssembly().GetName().Version.ToString(),
-                ExecutingDirectory = GetExecutingDirectory(),
+                Version = asm.GetName().Version.ToString(),
+                ExecutingDirectory = GetExecutingDirectory(asm),
                 CommandArguments = System.Environment.GetCommandLineArgs(),
-                CompanyName = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).CompanyName
+                CompanyName = FileVersionInfo.GetVersionInfo(asm.Location).CompanyName
             };
             currApp.FilePath = Path.Combine(currApp.ExecutingDirectory, currApp.Name ?? "");
 
@@ -36,15 +37,16 @@ namespace Structum.Elements.Environment
         /// <summary>
         /// 	Returns the application directory.
         /// </summary>
+        /// <param name="asm">Assembly to the Executing Directory from.</param>
         /// <returns>Application Directory.</returns>
-        private static string GetExecutingDirectory()
+        private static string GetExecutingDirectory(Assembly asm)
         {
             string replaceText = "file://";
             if(ExecutingEnvironment.LocalPlatform.OsPlatform == OsPlatformType.Windows) {
                 replaceText = "file:///";
             }
 
-            string codeBase = Assembly.GetExecutingAssembly().GetName().CodeBase.Replace(replaceText, "");
+            string codeBase = asm.GetName().CodeBase.Replace(replaceText, "");
             return Path.GetDirectoryName(codeBase);
         }
     }
