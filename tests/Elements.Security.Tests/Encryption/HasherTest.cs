@@ -16,7 +16,7 @@ namespace Structum.Elements.Security.Tests.Encryption
         {
             var hasher = new Hasher();
             string hash = hasher.ComputeHash("MyC0013ncrypti0nP@$$w0rd!");
-            Assert.Equal(44, hash.Length);
+            Assert.Equal(64, hash.Length);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Structum.Elements.Security.Tests.Encryption
                 HashingAlgorithm = CryptographicHashAlgorithmType.Md5
             };
             string hash = hasher.ComputeHash("MyC0013ncrypti0nP@$$w0rd!");
-            Assert.Equal(24, hash.Length);
+            Assert.Equal(32, hash.Length);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Structum.Elements.Security.Tests.Encryption
                 HashingAlgorithm = CryptographicHashAlgorithmType.Sha1
             };
             string hash = hasher.ComputeHash("MyC0013ncrypti0nP@$$w0rd!");
-            Assert.Equal(28, hash.Length);
+            Assert.Equal(40, hash.Length);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Structum.Elements.Security.Tests.Encryption
                 HashingAlgorithm = CryptographicHashAlgorithmType.Sha256
             };
             string hash = hasher.ComputeHash("MyC0013ncrypti0nP@$$w0rd!");
-            Assert.Equal(44, hash.Length);
+            Assert.Equal(64, hash.Length);
         }
     }
 }

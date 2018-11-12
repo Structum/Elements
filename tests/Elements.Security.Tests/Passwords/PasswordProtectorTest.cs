@@ -21,8 +21,8 @@ namespace Structum.Elements.Security.Tests.Passwords
 
                 Assert.NotNull(protectedPassword.Password);
 
-                Assert.True(protectedPassword.Password.Length <= 44); // The Size of SHA-256
-                Assert.True(protectedPassword.Password.Length >= 24); // The Size of MD5
+                Assert.True(protectedPassword.Password.Length <= 64); // The Size of SHA-256
+                Assert.True(protectedPassword.Password.Length >= 32); // The Size of MD5
 
                 Assert.NotNull(protectedPassword.Salt);
                 Assert.True(protectedPassword.IterationCount > 0);

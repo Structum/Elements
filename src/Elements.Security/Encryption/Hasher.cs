@@ -55,7 +55,12 @@ namespace Structum.Elements.Security.Encryption
 
                 hashBytes = hasher.ComputeHash(hashBytes);
 
-                return Convert.ToBase64String(hashBytes);
+                StringBuilder result = new StringBuilder(hashBytes.Length*2);
+                foreach(var b in hashBytes) {
+                    result.Append(b.ToString("x2"));
+                }
+
+                return result.ToString();
             }
         }
 
