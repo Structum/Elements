@@ -16,8 +16,13 @@ namespace Structum.Elements.Security.Encryption
         Sha1,
 
         /// <summary>
-        ///     SHA256 Algorithm.
+        ///     SHA2 - SHA256 Algorithm.
         /// </summary>
         Sha256,
+
+        /// <summary>
+        ///     SHA2 - SHA512 Algorithm.
+        /// </summary>
+        Sha512
     }
 }
