@@ -89,7 +89,7 @@ namespace Structum.Elements.Security.Passwords
 
             string protectedPassword = passwordToProtect + salt;
             for (int iteration = 0; iteration < iterationCount; iteration++) {
-                protectedPassword = this._hasher.ComputeHash(protectedPassword);
+                protectedPassword = this._hasher.ComputeHash(protectedPassword, true);
             }
 
             return new ProtectedPassword(protectedPassword, salt, iterationCount.Value);
