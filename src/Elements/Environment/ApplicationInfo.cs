@@ -28,36 +28,36 @@ namespace Structum.Elements.Environment
         ///     Gets or Sets the application name.
         /// </summary>
         /// <value>A string containing the name of the application file. (e.g. Photoshop.exe)(</value>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         ///     Gets or Sets the application version.
         /// </summary>
         /// <value>A string containing the application version. (e.g. 1.0.0.0)</value>
-        public string Version { get; set; }
+        public string Version { get; set; } = string.Empty;
 
         /// <summary>
         ///     Gets or Sets the application company name.
         /// </summary>
         /// <value>A string containing the Company Name that owns the application. (e.g. Adobe, Inc.)</value>
-        public string CompanyName { get; set; }
+        public string CompanyName { get; set; } = string.Empty;
 
         /// <summary>
         ///     Gets or Sets the application file path.
         /// </summary>
         /// <value>A string containing the full application path. (e.g. C:\Program Files\Adobe Photoshop\Photoshop.exe)</value>
-        public string FilePath { get; set; }
+        public string FilePath { get; set; } = string.Empty;
 
         /// <summary>
         ///     Gets or Sets the application executing directory.
         /// </summary>
         /// <value>A string containing the Executing directory for the application. (e.g. C:\\Program Files\\Adobe Photoshop\\")</value>
-        public string ExecutingDirectory { get; set; }
+        public string ExecutingDirectory { get; set; } = string.Empty;
 
         /// <summary>
         ///     Gets or Sets the application command line arguments.
         /// </summary>
         /// <value>A string containing command-line arguments. (e.g. -c)</value>
-        public string[] CommandArguments { get; set; }
+        public string[] CommandArguments { get; set; } = { };
     }
 }
