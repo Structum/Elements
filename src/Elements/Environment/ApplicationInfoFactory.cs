@@ -18,36 +18,30 @@ namespace Structum.Elements.Environment
         /// <summary>
         ///     Creates and returns the Current Application information.
         /// </summary>
+        /// <remarks>
+        ///     This method can gather the information for the Current Executing Application if it is a managed .Net application; when this is not the case this method will
+        ///     return an application information class with empty values.
+        /// </remarks>
         /// <returns>Current Application Information.</returns>
         public static ApplicationInfo CreateCurrentApplicationInfo()
         {
             Assembly asm = Assembly.GetEntryAssembly();
-            ApplicationInfo currApp = new ApplicationInfo {
-                Name = Path.GetFileName(System.Environment.GetCommandLineArgs()[0]),
-                Version = asm.GetName().Version.ToString(),
-                ExecutingDirectory = GetExecutingDirectory(asm),
-                CommandArguments = System.Environment.GetCommandLineArgs(),
-                CompanyName = FileVersionInfo.GetVersionInfo(asm.Location).CompanyName
-            };
-            currApp.FilePath = Path.Combine(currApp.ExecutingDirectory, currApp.Name ?? "");
 
-            return currApp;
-        }
-
-        /// <summary>
-        /// 	Returns the application directory.
-        /// </summary>
-        /// <param name="asm">Assembly to the Executing Directory from.</param>
-        /// <returns>Application Directory.</returns>
-        private static string GetExecutingDirectory(Assembly asm)
-        {
-            string replaceText = "file://";
-            if(ExecutingEnvironment.LocalPlatform.OsPlatform == OsPlatformType.Windows) {
-                replaceText = "file:///";
+            if (asm == null) {
+                return new ApplicationInfo {
+                    ExecutingDirectory = System.AppDomain.CurrentDomain.BaseDirectory
+                };
             }
 
-            string codeBase = asm.GetName().CodeBase.Replace(replaceText, "");
-            return Path.GetDirectoryName(codeBase);
+            string name = Path.GetFileName(System.Environment.GetCommandLineArgs()[0]);
+            return new ApplicationInfo {
+                Name = name,
+                Version = asm.GetName().Version.ToString(),
+                ExecutingDirectory =  System.AppDomain.CurrentDomain.BaseDirectory,
+                CommandArguments = System.Environment.GetCommandLineArgs(),
+                CompanyName = FileVersionInfo.GetVersionInfo(asm.Location).CompanyName,
+                FilePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, name ?? "")
+            };
         }
     }
 }
