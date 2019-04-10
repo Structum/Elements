@@ -34,14 +34,31 @@ namespace Structum.Elements.Environment
             }
 
             string name = Path.GetFileName(System.Environment.GetCommandLineArgs()[0]);
+            string executingDirectory = GetExecutingDirectory(asm);
             return new ApplicationInfo {
                 Name = name,
                 Version = asm.GetName().Version.ToString(),
-                ExecutingDirectory =  System.AppDomain.CurrentDomain.BaseDirectory,
+                ExecutingDirectory =  executingDirectory,
                 CommandArguments = System.Environment.GetCommandLineArgs(),
                 CompanyName = FileVersionInfo.GetVersionInfo(asm.Location).CompanyName,
-                FilePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, name ?? "")
+                FilePath = Path.Combine(executingDirectory, name ?? "")
             };
+        }
+
+        /// <summary>
+        /// 	Returns the application directory.
+        /// </summary>
+        /// <param name="asm">Assembly to the Executing Directory from.</param>
+        /// <returns>Application Directory.</returns>
+        private static string GetExecutingDirectory(Assembly asm)
+        {
+            string replaceText = "file://";
+            if(ExecutingEnvironment.LocalPlatform.OsPlatform == OsPlatformType.Windows) {
+                replaceText = "file:///";
+            }
+
+            string codeBase = asm.GetName().CodeBase.Replace(replaceText, "");
+            return Path.GetDirectoryName(codeBase);
         }
     }
 }
