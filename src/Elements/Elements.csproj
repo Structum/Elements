@@ -9,7 +9,7 @@
 		<copyright>2018 Structum, Inc.</copyright>
         <AssemblyName>Structum.Elements</AssemblyName>
         <RootNamespace>Structum.Elements</RootNamespace>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
 		<licenseUrl>https://github.com/Structum/Elements/blob/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/Structum/Elements</projectUrl>
 		<description>Common classes and Type extensions.</description>

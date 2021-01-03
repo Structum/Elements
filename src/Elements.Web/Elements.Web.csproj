@@ -6,7 +6,7 @@
     <Owners>aespinoza</Owners>
     <Company>Structum, Inc.</Company>
     <copyright>2018 Structum, Inc.</copyright>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Structum.Elements.Web</AssemblyName>
     <RootNamespace>Structum.Elements.Web</RootNamespace>
 	<licenseUrl>https://github.com/Structum/Elements/blob/master/LICENSE</licenseUrl>
