@@ -6,17 +6,17 @@ Elements is a set of reusable components commonly used in applications.
 
 | Package | description  | nuget Stable |
 | ------- | ------------ | -------------|
-| [Structum.Elements](https://www.nuget.org/packages/Structum.Elements/) | Common classes and Type extensions | [![nuget](https://img.shields.io/badge/nuget-v1.2.4.3-blue.svg)](https://www.nuget.org/packages/Structum.Elements) |
-| [Structum.Elements.Web](https://www.nuget.org/packages/Structum.Elements.Web/) | Lightweight Rest Requests and URL parser. | [![nuget](https://img.shields.io/badge/nuget-v1.2.4.3-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Web) |
-| [Structum.Elements.Security](https://www.nuget.org/packages/Structum.Elements.Security/) | Common Encryption, Hashing and Password protection classes. | [![nuget](https://img.shields.io/badge/nuget-v1.2.4.3-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Security) |
-| [Structum.Elements.Data](https://www.nuget.org/packages/Structum.Elements.Data/) | Data Structures and Hash Functions. | [![nuget](https://img.shields.io/badge/nuget-v1.2.4.3-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Data) |
+| [Structum.Elements](https://www.nuget.org/packages/Structum.Elements/) | Common classes and Type extensions | [![nuget](https://img.shields.io/badge/nuget-v1.2.4.4-blue.svg)](https://www.nuget.org/packages/Structum.Elements) |
+| [Structum.Elements.Web](https://www.nuget.org/packages/Structum.Elements.Web/) | Lightweight Rest Requests and URL parser. | [![nuget](https://img.shields.io/badge/nuget-v1.2.4.4-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Web) |
+| [Structum.Elements.Security](https://www.nuget.org/packages/Structum.Elements.Security/) | Common Encryption, Hashing and Password protection classes. | [![nuget](https://img.shields.io/badge/nuget-v1.2.4.4-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Security) |
+| [Structum.Elements.Data](https://www.nuget.org/packages/Structum.Elements.Data/) | Data Structures and Hash Functions. | [![nuget](https://img.shields.io/badge/nuget-v1.2.4.4-blue.svg)](https://www.nuget.org/packages/Structum.Elements.Data) |
 
 ## Getting Started
 
 ### Dependencies
 
-* .NETStandard 2.0
-* [fastJSON](https://www.nuget.org/packages/fastJSON/) (>= 2.2.0)
+* .NETStandard 2.1
+* [fastJSON](https://www.nuget.org/packages/fastJSON/) (>= 2.4.0)
 
 
 ### Installing
